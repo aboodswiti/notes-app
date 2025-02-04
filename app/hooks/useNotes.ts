@@ -11,10 +11,12 @@ export const useNotes = () => {
   const fetchNotes = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${API_BASE_URL}/api/notes`);
+      const response = await fetch(`${API_BASE_URL}/api/notes/`);
       if (!response.ok) {
         throw new Error('Failed to fetch notes');
       }
+      console.log(response);
+      
       const data = await response.json();
  
       setNotes(data);
@@ -27,7 +29,7 @@ export const useNotes = () => {
 
   const addNote = async (noteData: { title: string; content: string }) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/notes`, {
+      const response = await fetch(`${API_BASE_URL}/api/notes/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(noteData),

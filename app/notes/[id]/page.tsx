@@ -1,9 +1,12 @@
 import BackButton from '@/app/components/BackButton';
 import { Note } from '@/app/components/types';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+
 async function getNoteById(id: string): Promise<Note | null> {
   try {
-    const res = await fetch(`http://localhost:3001/api/notes/${id}`);
+    const res = await fetch(`${API_BASE_URL}/api/notes/${id}`);
 
     if (!res.ok) {
       console.error(`Failed to fetch note. Status: ${res.status}`);
