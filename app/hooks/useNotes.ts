@@ -15,7 +15,6 @@ export const useNotes = () => {
       if (!response.ok) {
         throw new Error('Failed to fetch notes');
       }
-      console.log(response);
       
       const data = await response.json();
  
